@@ -3,7 +3,8 @@ from flask.logging import create_logger
 import logging
 
 import pandas as pd
-from joblib import dump, load
+import joblib
+# from sklearn.externals import joblib
 from sklearn.preprocessing import StandardScaler
 
 app = Flask(__name__)
@@ -13,8 +14,7 @@ LOG.setLevel(logging.INFO)
 def scale(payload):
     """Scales Payload"""
     
-    # LOG.info(f"Scaling Payload: \n{payload}")
-    LOG.info("Scaling Payload:")
+    LOG.info(f"Scaling Payload: \n{payload}")
     scaler = StandardScaler().fit(payload.astype(float))
     scaled_adhoc_predict = scaler.transform(payload.astype(float))
     return scaled_adhoc_predict
@@ -56,11 +56,9 @@ def predict():
     
     # Logging the input payload
     json_payload = request.json
-    # LOG.info(f"JSON payload: \n{json_payload}")
-    LOG.info("JSON payload: ")
+    LOG.info(f"JSON payload: \n{json_payload}")
     inference_payload = pd.DataFrame(json_payload)
-    #  LOG.info(f"Inference payload DataFrame: \n{inference_payload}")
-    LOG.info("Inference payload DataFrame:")
+    LOG.info(f"Inference payload DataFrame: \n{inference_payload}")
     # scale the input
     scaled_payload = scale(inference_payload)
     # get an output prediction from the pretrained model, clf
@@ -70,5 +68,5 @@ def predict():
 
 if __name__ == "__main__":
     # load pretrained model as clf
-    clf = load("./model_data/boston_housing_prediction.joblib")
+    clf = joblib.load("./model_data/boston_housing_prediction.joblib")
     app.run(host='0.0.0.0', port=80, debug=True) # specify port=80
