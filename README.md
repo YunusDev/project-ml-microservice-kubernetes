@@ -1,10 +1,38 @@
-<include a CircleCI status badge, here>
+[![CircleCI](https://circleci.com/gh/ClaireLee22/Operationalize-a-Machine-Learning-Microservice-API.svg?style=svg)]
 
 ## Project Overview
 
-In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. 
+In this project, you will apply the skills you have acquired 
+in this course to operationalize a Machine Learning Microservice API. 
 
-You are given a pre-trained, `sklearn` model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on. You can read more about the data, which was initially taken from Kaggle, on [the data source site](https://www.kaggle.com/c/boston-housing). This project tests your ability to operationalize a Python flask app—in a provided file, `app.py`—that serves out predictions (inference) about housing prices through API calls. This project could be extended to any pre-trained machine learning model, such as those for image recognition and data labeling.
+This project is about the deployment of a machine
+learning model with docker and kubernetes. It has pre built scripts that can be used to 
+startup the containers or clusters. We are given a machine learning model
+thats has been trained to predict housing prices in Boston according to several features,
+such as average rooms in a home and data about highway access, teacher-to-pupil ratios, 
+and so on. You can read more about
+the data, which was initially taken from Kaggle, on [the data source site](https://www.kaggle.com/c/boston-housing).
+
+## Setup the Environment
+
+* Create a virtualenv and activate it
+* Run `make install` to install the necessary dependencies
+
+### Running `app.py`
+
+1. Standalone:  `python app.py`
+2. Run in Docker:  `./run_docker.sh`
+3. Run in Kubernetes:  `./run_kubernetes.sh`
+
+
+### Files in Repo
+- `run_docker.sh` -  Script to build and run the app using docker
+- `upload_docker.sh` - Script to push the docker image to docker hub
+- `make_prediction.sh` - Script to make a prediction
+- `run_kubernetes.sh` - Script to build and run the app using kubernetes using our prebuilt image
+- `app.py` - Application
+-  `requirements.txt` - Required libraries
+-  `Makefile` - Contains executables like installation, lint, setup
 
 ### Project Tasks
 
@@ -22,17 +50,6 @@ You can find a detailed [project rubric, here](https://review.udacity.com/#!/rub
 **The final implementation of the project will showcase your abilities to operationalize production microservices.**
 
 ---
-
-## Setup the Environment
-
-* Create a virtualenv and activate it
-* Run `make install` to install the necessary dependencies
-
-### Running `app.py`
-
-1. Standalone:  `python app.py`
-2. Run in Docker:  `./run_docker.sh`
-3. Run in Kubernetes:  `./run_kubernetes.sh`
 
 ### Kubernetes Steps
 

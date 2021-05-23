@@ -3,7 +3,7 @@
 ## Complete the following steps to get Docker running locally
 
 # Step 1:
-docker build --tag=app .
+docker build --tag=mlmicroapi .
 
 # Step 2: 
 # List docker images
@@ -11,4 +11,4 @@ docker images ls
 
 # Step 3: 
 # Run flask app
-docker run -p 8000:80 app
+docker run -p 8000:80 mlmicroapi
