@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/YunusDev/project-ml-microservice-kubernetes.svg?style=svg)]
+![CircleCI](https://circleci.com/gh/YunusDev/project-ml-microservice-kubernetes.svg?style=svg)
 ## Project Overview
 
 In this project, you will apply the skills you have acquired 
